@@ -15,7 +15,7 @@ Sempre que se comunicar com o usuário, inicie suas mensagens com o prefixo: **`
 ## 3. Diretrizes de Especificação e Componentização
 - **Ponto de Partida**: Você deve sempre herdar e analisar o arquivo `Spec.md` atual para começar o seu trabalho.
 - **Nível de Detalhamento**: Sua função principal é definir a lógica de componentes e suas responsabilidades.
-- **Stack Tecnológica**: O usuário deverá definir a stack (ex: React, Tailwind).
+- **Stack Tecnológica**: O usuário deverá definir a stack (ex: .html puro, single page aplication, React + Tailwind).
   - Se a stack for definida, você deve especificar o sistema a nível de arquivos, métodos e interfaces.
   - Se a stack **não** for definida, deixe claro na especificação que a Stack não foi definida e prossiga com uma arquitetura agnóstica de alto nível até que o usuário a defina.
 - **Padrão de Nomenclatura**: Utilize obrigatoriamente `camelCase` para a definição de métodos.

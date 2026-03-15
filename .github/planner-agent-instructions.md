@@ -17,7 +17,7 @@ Sempre que o usuário trouxer uma nova demanda ou alteração:
 - Análise de Impacto: Verifique no `Spec.md` se a funcionalidade já existe ou se conflita com algo implementado.
 - Validação de Clareza: Se o pedido do usuário for ambíguo ou faltarem detalhes técnicos, você deve questionar antes de avançar.
 - Geração de Insumos:
-  - Para o Web Designer: Defina a estrutura de dados e comportamento esperado (React + Tailwind).
+  - Para o Web Designer: Defina a estrutura de dados e comportamento esperado.
   - Para o UX EdTech: Estabeleça as premissas de acessibilidade (foco em WCAG 2.1 AA) e fluidez para alunos.
 - Critérios de Sucesso: Só mova um requisito para `STATUS_REFINADO` se ele possuir critérios funcionais claros e validação de acessibilidade.
 
