@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IA para Desenvolvedores – Hub da Disciplina</title>
+  <style>
+    :root {
+      --color-primary: #306719;
+      --color-text: #333333;
+      --color-text-muted: #555555;
+      --color-border: #dddddd;
+      --color-bg: #ffffff;
+      --color-bg-soft: #f7f7f7;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+
+    header.page-header {
+      margin-bottom: 24px;
+    }
+
+    .page-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 8px;
+    }
+
+    .page-subtitle {
+      font-size: 1rem;
+      color: var(--color-text-muted);
+      margin-bottom: 12px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .chip {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background-color: var(--color-bg-soft);
+      color: var(--color-text-muted);
+      border: 1px solid var(--color-border);
+    }
+
+    nav.page-nav {
+      margin-bottom: 24px;
+      padding: 12px 12px 8px;
+      background-color: var(--color-bg-soft);
+      border-radius: 8px;
+      border: 1px solid var(--color-border);
+    }
+
+    .page-nav-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--color-text);
+    }
+
+    .page-nav ul {
+      list-style: none;
+    }
+
+    .page-nav li + li {
+      margin-top: 4px;
+    }
+
+    .page-nav a {
+      color: var(--color-primary);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      font-size: 0.95rem;
+    }
+
+    .page-nav a:focus-visible,
+    .page-nav a:hover {
+      outline: none;
+      text-decoration-thickness: 2px;
+    }
+
+    main {
+      display: block;
+    }
+
+    section {
+      margin-bottom: 24px;
+    }
+
+    details {
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      background-color: var(--color-bg);
+      padding: 8px 10px 10px;
+    }
+
+    details + section,
+    section + section {
+      margin-top: 16px;
+    }
+
+    summary {
+      list-style: none;
+      cursor: pointer;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .summary-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .summary-title {
+      margin: 0;
+    }
+
+    .summary-indicator {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+    }
+
+    details[open] .summary-indicator::after {
+      content: "(recolher)";
+    }
+
+    details:not([open]) .summary-indicator::after {
+      content: "(expandir)";
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      color: var(--color-primary);
+      margin-bottom: 8px;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      color: var(--color-primary);
+      margin-bottom: 4px;
+    }
+
+    p {
+      margin-bottom: 8px;
+      font-size: 0.98rem;
+    }
+
+    .section-intro {
+      margin-bottom: 12px;
+      color: var(--color-text-muted);
+    }
+
+    .mini-sumario {
+      margin-bottom: 16px;
+      padding: 10px 12px;
+      background-color: var(--color-bg-soft);
+      border-radius: 8px;
+      border: 1px solid var(--color-border);
+    }
+
+    .mini-sumario-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .mini-sumario ul {
+      list-style: none;
+    }
+
+    .mini-sumario li + li {
+      margin-top: 4px;
+    }
+
+    .mini-sumario a {
+      color: var(--color-primary);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      font-size: 0.9rem;
+    }
+
+    .mini-sumario a:focus-visible,
+    .mini-sumario a:hover {
+      outline: none;
+      text-decoration-thickness: 2px;
+    }
+
+    .card-topico {
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      background-color: var(--color-bg);
+      margin-bottom: 12px;
+    }
+
+    .card-topico ul {
+      padding-left: 18px;
+      margin-top: 4px;
+      font-size: 0.95rem;
+    }
+
+    .card-topico li {
+      margin-bottom: 4px;
+    }
+
+    .em-breve {
+      font-style: italic;
+      color: var(--color-text-muted);
+    }
+
+    .simple-list ul {
+      padding-left: 18px;
+      margin-top: 4px;
+    }
+
+    .simple-list li {
+      margin-bottom: 4px;
+      font-size: 0.96rem;
+    }
+
+    footer.page-footer {
+      border-top: 1px solid var(--color-border);
+      padding-top: 16px;
+      margin-top: 8px;
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+    }
+
+    .back-to-top {
+      margin-top: 8px;
+    }
+
+    .back-to-top a {
+      color: var(--color-primary);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-size: 0.9rem;
+    }
+
+    .back-to-top a:focus-visible,
+    .back-to-top a:hover {
+      outline: none;
+      text-decoration-thickness: 2px;
+    }
+
+    @media (min-width: 768px) {
+      .page {
+        padding: 32px 24px 48px;
+      }
+
+      .page-title {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page" id="topo">
+    <header class="page-header">
+      <h1 class="page-title">IA para Desenvolvedores</h1>
+      <p class="page-subtitle">Hub da disciplina: aulas, materiais e simulados.</p>
+      <div class="chips" aria-label="Informações da trilha">
+        <span class="chip">Avançado</span>
+        <span class="chip">Síncrono</span>
+      </div>
+    </header>
+
+    <nav class="page-nav" aria-label="Navegação da disciplina">
+      <p class="page-nav-title">Navegue pela disciplina:</p>
+      <ul>
+        <li><a href="#aula-1">Aula 1 – IA para Geração de Código</a></li>
+        <li><a href="#aula-2">Aula 2 – Testes Unitários Automáticos com IA</a></li>
+        <li><a href="#aula-3">Aula 3 – Documentação Viva com IA</a></li>
+        <li><a href="#aula-4">Aula 4 – Integração de Agentes</a></li>
+        <li><a href="#aula-5">Aula 5 – Arquitetura de Sistemas com IA</a></li>
+        <li><a href="#links-uteis">Links úteis</a></li>
+        <li><a href="#materiais-adicionais">Materiais adicionais</a></li>
+        <li><a href="#simulado">Simulado</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <section id="aula-1">
+        <details open>
+          <summary>
+            <div class="summary-header">
+              <h2 class="summary-title">Aula 1 – IA para Geração de Código: Do Prompt ao Pull Request Profissional</h2>
+              <span class="summary-indicator" aria-hidden="true"></span>
+            </div>
+          </summary>
+
+          <p class="section-intro">
+            Esta aula foca em como utilizar IA para apoiar todo o ciclo de geração de código, da ideação ao pull request.
+            O conteúdo detalhado será preenchido pelo professor conforme o andamento da disciplina.
+          </p>
+
+          <div class="mini-sumario" aria-label="Sumário da Aula 1">
+            <p class="mini-sumario-title">Tópicos da Aula 1:</p>
+            <ul>
+              <li><a href="#topico-1-1">A representação do mundo de forma digital</a></li>
+              <li><a href="#topico-1-2">O que é o prompt e contexto?</a></li>
+              <li><a href="#topico-1-3">Ideação e vibe coding</a></li>
+              <li><a href="#topico-1-4">Spec-Driven Development</a></li>
+              <li><a href="#topico-1-5">Realizando o seu PR com auxílio de IA</a></li>
+            </ul>
+          </div>
+
+          <article id="topico-1-1" class="card-topico">
+            <h3>1. A representação do mundo de forma digital</h3>
+            <p>
+              Conteúdo deste tópico será definido pelo professor. Use este espaço para explicar os conceitos principais
+              que conectam o mundo real à sua representação em formato digital.
+            </p>
+            <ul>
+              <li>Pontos-chave serão adicionados aqui.</li>
+            </ul>
+          </article>
+
+          <article id="topico-1-2" class="card-topico">
+            <h3>2. O que é o prompt e contexto?</h3>
+            <p>
+              Conteúdo deste tópico será definido pelo professor. Utilize este bloco para detalhar como prompts e
+              contexto influenciam a atuação da IA na geração de código.
+            </p>
+            <ul>
+              <li>Pontos-chave serão adicionados aqui.</li>
+            </ul>
+          </article>
+
+          <article id="topico-1-3" class="card-topico">
+            <h3>3. Ideação e vibe coding</h3>
+            <p>
+              Conteúdo deste tópico será definido pelo professor. Aqui podem ser descritas estratégias para ideação,
+              exploração de soluções e "vibe coding" com apoio de IA.
+            </p>
+            <ul>
+              <li>Pontos-chave serão adicionados aqui.</li>
+            </ul>
+          </article>
+
+          <article id="topico-1-4" class="card-topico">
+            <h3>4. Spec-Driven Development</h3>
+            <p>
+              Conteúdo deste tópico será definido pelo professor. Use este espaço para explicar como especificações
+              orientam o desenvolvimento auxiliado por IA.
+            </p>
+            <ul>
+              <li>Pontos-chave serão adicionados aqui.</li>
+            </ul>
+          </article>
+
+          <article id="topico-1-5" class="card-topico">
+            <h3>5. Realizando o seu PR com auxílio de IA</h3>
+            <p>
+              Conteúdo deste tópico será definido pelo professor. Descreva aqui boas práticas para preparar, revisar e
+              submeter pull requests com suporte de ferramentas de IA.
+            </p>
+            <ul>
+              <li>Pontos-chave serão adicionados aqui.</li>
+            </ul>
+          </article>
+        </details>
+      </section>
+
+      <section id="aula-2">
+        <details>
+          <summary>
+            <div class="summary-header">
+              <h2 class="summary-title">Aula 2 – Construindo um Workflow de Testes Unitários Automáticos com IA</h2>
+              <span class="summary-indicator" aria-hidden="true"></span>
+            </div>
+          </summary>
+          <p class="em-breve">Conteúdo desta aula será disponibilizado em breve.</p>
+        </details>
+      </section>
+
+      <section id="aula-3">
+        <details>
+          <summary>
+            <div class="summary-header">
+              <h2 class="summary-title">Aula 3 – Documentação Viva com IA: Automação, Versionamento e Consistência</h2>
+              <span class="summary-indicator" aria-hidden="true"></span>
+            </div>
+          </summary>
+          <p class="em-breve">Conteúdo desta aula será disponibilizado em breve.</p>
+        </details>
+      </section>
+
+      <section id="aula-4">
+        <details>
+          <summary>
+            <div class="summary-header">
+              <h2 class="summary-title">Aula 4 – Integração de Agentes ao Ecossistema: APIs, RAG e Observabilidade</h2>
+              <span class="summary-indicator" aria-hidden="true"></span>
+            </div>
+          </summary>
+          <p class="em-breve">Conteúdo desta aula será disponibilizado em breve.</p>
+        </details>
+      </section>
+
+      <section id="aula-5">
+        <details>
+          <summary>
+            <div class="summary-header">
+              <h2 class="summary-title">Aula 5 – Arquitetura de Sistemas com IA: Orquestração de Agentes, Memória e Segurança</h2>
+              <span class="summary-indicator" aria-hidden="true"></span>
+            </div>
+          </summary>
+          <p class="em-breve">Conteúdo desta aula será disponibilizado em breve.</p>
+        </details>
+      </section>
+
+      <section id="links-uteis" class="simple-list">
+        <details>
+          <summary>
+            <div class="summary-header">
+              <h2 class="summary-title">Links úteis</h2>
+              <span class="summary-indicator" aria-hidden="true"></span>
+            </div>
+          </summary>
+
+          <p class="section-intro">
+            Aqui você encontrará links importantes citados ao longo da disciplina. Os endereços serão preenchidos pelo
+            professor conforme as aulas forem acontecendo.
+          </p>
+          <ul>
+            <li>Repositório no GitHub – link será adicionado pelo professor.</li>
+            <li>Apresentação da aula no Google Apresentações – link será adicionado pelo professor.</li>
+            <li>Outros recursos úteis – serão adicionados pelo professor.</li>
+          </ul>
+        </details>
+      </section>
+
+      <section id="materiais-adicionais" class="simple-list">
+        <details>
+          <summary>
+            <div class="summary-header">
+              <h2 class="summary-title">Materiais adicionais</h2>
+              <span class="summary-indicator" aria-hidden="true"></span>
+            </div>
+          </summary>
+
+          <p class="section-intro">
+            Nesta seção ficarão PDFs, artigos, vídeos e outros materiais complementares recomendados para aprofundar o
+            estudo.
+          </p>
+          <ul>
+            <li>Material adicional 1 – será definido e atualizado pelo professor.</li>
+          </ul>
+        </details>
+      </section>
+
+      <section id="simulado" class="simple-list">
+        <details>
+          <summary>
+            <div class="summary-header">
+              <h2 class="summary-title">Simulado</h2>
+              <span class="summary-indicator" aria-hidden="true"></span>
+            </div>
+          </summary>
+
+          <p class="section-intro">
+            Aqui serão disponibilizados os links para simulados e questionários de revisão da disciplina.
+          </p>
+          <ul>
+            <li>Simulado 1 – link será adicionado pelo professor.</li>
+          </ul>
+        </details>
+      </section>
+    </main>
+
+    <footer class="page-footer">
+      <p>Página de apoio à disciplina IA para Desenvolvedores – versão inicial.</p>
+      <p class="back-to-top"><a href="#topo">Voltar ao início</a></p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -18,6 +18,8 @@ Página HTML simples para ser incorporada em um Google Sites, servindo como hub 
   - Status: `STATUS_REFINADO`
 - Nenhum JavaScript obrigatório para funcionamento da página (apenas HTML + CSS).  
   - Status: `STATUS_REFINADO`
+- Colapsabilidade das seções principais implementada com recursos nativos de HTML (por exemplo, `<details>` e `<summary>`), sem depender de bibliotecas externas.  
+  - Status: `STATUS_REFINADO`
 
 ---
 
@@ -34,6 +36,7 @@ Página HTML simples para ser incorporada em um Google Sites, servindo como hub 
     - `<title>IA para Desenvolvedores – Hub da Disciplina</title>`
     - `<style>…</style>` com todos os estilos.
   - `<body>` contendo todas as seções descritas abaixo, em coluna única centralizada (largura máxima ≈ 800px).
+  - Todas as seções principais organizadas em blocos colapsáveis, permitindo que o aluno expanda apenas o que deseja ler em cada momento, reduzindo a carga cognitiva.
 - Status: `STATUS_REFINADO`
 
 ### 3.2. Header / Hero da Disciplina
@@ -72,6 +75,7 @@ Página HTML simples para ser incorporada em um Google Sites, servindo como hub 
   - `#links-uteis`
   - `#materiais-adicionais`
   - `#simulado`
+- As seções principais devem ser navegáveis a partir do topo e, ao chegar na âncora, o bloco colapsável correspondente deve estar claramente identificado para o aluno expandir o conteúdo desejado.
 - Visual:
   - Lista vertical simples (para não parecer menu complexo).
   - Links com bom espaçamento vertical, cores discretas, sublinhado ou mudança visual clara no hover/foco.
