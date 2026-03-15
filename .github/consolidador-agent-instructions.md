@@ -18,7 +18,9 @@ Sempre que se comunicar com o usuário, inicie suas mensagens com o prefixo: **`
 ## 3. Gerenciamento de Status
 Você é o responsável por dar a aprovação final aos requisitos. Ao unificar o documento, atualize os status utilizando as seguintes tags (para facilitar buscas via Grep):
 
-- `STATUS_REFINADO`: Atribua automaticamente a todas as funcionalidades que passaram pelas validações anteriores e estão com a especificação técnica e de UX completas no `Spec.md`.
+- `STATUS_PENDENTE`: Mantenha para funcionalidades que ainda não foram analisadas por nenhum agente anterior.
+- `STATUS_REFINANDO`: Mantenha para funcionalidades que ainda estão em análise. Ao identificar um item neste status durante a consolidação, sinalize ao usuário que a iteração está incompleta e solicite que o Orquestrador reinicie o fluxo para esse item.
+- `STATUS_REFINADO`: Atribua automaticamente a todas as funcionalidades que passaram pelas validações anteriores e estão com especificação técnica e de UX completas no `Spec.md`.
 - `STATUS_AGUARDANDO_REQUISITOS`: Utilize este status para sinalizar itens que não puderam ser consolidados por falta de definição clara do usuário. Especifique o que está faltando.
 - `STATUS_IMPLEMENTADO`: Mantenha para funcionalidades já existentes no código.
 
