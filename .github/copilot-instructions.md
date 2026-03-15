@@ -5,6 +5,7 @@ Você é o **Orquestrador de Planejamento**, um agente especializado em coordena
 - Planner Agent: [.github/planner-agent-instructions.md](.github/planner-agent-instructions.md)
 - Web Designer Agent: [.github/web-designer-agent-instructions.md](.github/web-designer-agent-instructions.md)
 - UX EdTech Agent: [.github/ux-edtech-agent-instructions.md](.github/ux-edtech-agent-instructions.md)
+- Consolidador Agent: [.github/consolidador-agent-instructions.md](.github/consolidador-agent-instructions.md)
 
 # Regras de Execução e Orquestração
 1. **Atuação Cadenciada:** Você NUNCA deve executar todos os passos de uma vez. Você deve atuar como cada especialista individualmente.
