@@ -8,6 +8,12 @@ Página HTML simples para ser incorporada em um Google Sites, servindo como hub 
 - Visual inspirado na trilha oficial **IA para DEVs – SCTEC**, apenas como referência de cores/estética.
 - Conteúdo estrutural completo apenas para a **Aula 1**; demais aulas, links, materiais e simulados entram como placeholders.
 
+Organizacao de arquivos no repositorio:
+
+- A pagina HTML final fica em `ia-para-desenvolvedores.html`.
+- As especificacoes oficiais ficam em `spec.md`.
+- Conteudos das aulas apresentadas ficam em `assets/aulas/` (ex.: `assets/aulas/aula1.md`).
+
 ---
 
 ## 2. Stack e Restrições Técnicas
