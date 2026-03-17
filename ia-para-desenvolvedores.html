@@ -264,15 +264,21 @@
       margin-top: 8px;
     }
 
-    .back-to-top a {
+    .back-to-top button {
+      appearance: none;
+      border: none;
+      background: none;
+      padding: 0;
       color: var(--color-primary);
       text-decoration: underline;
       text-underline-offset: 2px;
       font-size: 0.9rem;
+      cursor: pointer;
+      text-align: left;
     }
 
-    .back-to-top a:focus-visible,
-    .back-to-top a:hover {
+    .back-to-top button:focus-visible,
+    .back-to-top button:hover {
       outline: none;
       text-decoration-thickness: 2px;
     }
@@ -690,8 +696,19 @@
 
     <footer class="page-footer">
       <p>Página de apoio à disciplina IA para Desenvolvedores – versão inicial.</p>
-      <p class="back-to-top"><a href="#topo">Voltar ao início</a></p>
+      <p class="back-to-top"><button type="button" data-scroll-top>Voltar ao início</button></p>
     </footer>
   </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var button = document.querySelector("[data-scroll-top]");
+      if (!button) {
+        return;
+      }
+      button.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  </script>
 </body>
 </html>

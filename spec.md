@@ -24,6 +24,8 @@ Organizacao de arquivos no repositorio:
   - Status: `STATUS_REFINADO`
 - Nenhum JavaScript obrigatório para funcionamento da página (apenas HTML + CSS).  
   - Status: `STATUS_REFINADO`
+- JavaScript opcional apenas para UX em embeds (ex.: botão "Voltar ao início" com `scrollTo` sem alterar URL).  
+  - Status: `STATUS_REFINADO`
 - Colapsabilidade das seções principais implementada com recursos nativos de HTML (por exemplo, `<details>` e `<summary>`), sem depender de bibliotecas externas.  
   - Status: `STATUS_REFINADO`
 
@@ -298,7 +300,7 @@ Para cada aula:
 - Pequeno bloco final:
   - Parágrafo discreto:
     - “Página de apoio à disciplina IA para Desenvolvedores – versão inicial.”
-  - Opcional: link “Voltar ao início” apontando para o topo (`#topo` ou similar).
+  - Opcional: botão “Voltar ao início” com `scrollTo` via JavaScript, evitando ancoras em embeds.
 - Status: `STATUS_REFINADO`
 
 ---
