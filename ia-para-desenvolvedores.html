@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IA para Desenvolvedores – Hub da Disciplina</title>
+  <style>
+    :root {
+      --color-primary: #306719;
+      --color-text: #333333;
+      --color-text-muted: #555555;
+      --color-border: #dddddd;
+      --color-bg: #ffffff;
+      --color-bg-soft: #f7f7f7;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+
+    header.page-header {
+      margin-bottom: 24px;
+    }
+
+    .page-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 8px;
+    }
+
+    .page-subtitle {
+      font-size: 1rem;
+      color: var(--color-text-muted);
+      margin-bottom: 12px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .chip {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background-color: var(--color-bg-soft);
+      color: var(--color-text-muted);
+      border: 1px solid var(--color-border);
+    }
+
+    nav.page-nav {
+      margin-bottom: 24px;
+      padding: 12px 12px 8px;
+      background-color: var(--color-bg-soft);
+      border-radius: 8px;
+      border: 1px solid var(--color-border);
+    }
+
+    .page-nav-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--color-text);
+    }
+
+    .page-nav ul {
+      list-style: none;
+    }
+
+    .page-nav li + li {
+      margin-top: 4px;
+    }
+
+    .page-nav a {
+      color: var(--color-primary);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      font-size: 0.95rem;
+    }
+
+    .page-nav a:focus-visible,
+    .page-nav a:hover {
+      outline: none;
+      text-decoration-thickness: 2px;
+    }
+
+    main {
+      display: block;
+    }
+
+    section {
+      margin-bottom: 24px;
+    }
+
+    details {
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      background-color: var(--color-bg);
+      padding: 8px 10px 10px;
+    }
+
+    details + section,
+    section + section {
+      margin-top: 16px;
+    }
+
+    summary {
+      list-style: none;
+      cursor: pointer;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .summary-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .summary-title {
+      margin: 0;
+    }
+
+    .summary-indicator {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+    }
+
+    details[open] .summary-indicator::after {
+      content: "(recolher)";
+    }
+
+    details:not([open]) .summary-indicator::after {
+      content: "(expandir)";
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      color: var(--color-primary);
+      margin-bottom: 8px;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      color: var(--color-primary);
+      margin-bottom: 4px;
+    }
+
+    p {
+      margin-bottom: 8px;
+      font-size: 0.98rem;
+    }
+
+    .section-intro {
+      margin-bottom: 12px;
+      color: var(--color-text-muted);
+    }
+
+    .mini-sumario {
+      margin-bottom: 16px;
+      padding: 10px 12px;
+      background-color: var(--color-bg-soft);
+      border-radius: 8px;
+      border: 1px solid var(--color-border);
+    }
+
+    .mini-sumario-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .mini-sumario ul {
+      list-style: none;
+    }
+
+    .mini-sumario li + li {
+      margin-top: 4px;
+    }
+
+    .mini-sumario a {
+      color: var(--color-primary);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      font-size: 0.9rem;
+    }
+
+    .mini-sumario a:focus-visible,
+    .mini-sumario a:hover {
+      outline: none;
+      text-decoration-thickness: 2px;
+    }
+
+    .card-topico {
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      background-color: var(--color-bg);
+      margin-bottom: 12px;
+    }
+
+    .card-topico ul {
+      padding-left: 18px;
+      margin-top: 4px;
+      font-size: 0.95rem;
+    }
+
+    .card-topico li {
+      margin-bottom: 4px;
+    }
+
+    .em-breve {
+      font-style: italic;
+      color: var(--color-text-muted);
+    }
+
+    .simple-list ul {
+      padding-left: 18px;
+      margin-top: 4px;
+    }
+
+    .simple-list li {
+      margin-bottom: 4px;
+      font-size: 0.96rem;
+    }
+
+    footer.page-footer {
+      border-top: 1px solid var(--color-border);
+      padding-top: 16px;
+      margin-top: 8px;
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+    }
+
+    .back-to-top {
+      margin-top: 8px;
+    }
+
+    .back-to-top button {
+      appearance: none;
+      border: none;
+      background: none;
+      padding: 0;
+      color: var(--color-primary);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .back-to-top button:focus-visible,
+    .back-to-top button:hover {
+      outline: none;
+      text-decoration-thickness: 2px;
+    }
+
+    @media (min-width: 768px) {
+      .page {
+        padding: 32px 24px 48px;
+      }
+
+      .page-title {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page" id="topo">
+    <header class="page-header">
+      <h1 class="page-title">IA para Desenvolvedores</h1>
+      <p class="page-subtitle">Do contexto ao PR: fundamentos, engenharia e fluxo profissional com IA.</p>
+      <div class="chips" aria-label="Informações da trilha">
+        <span class="chip">Disciplina técnica</span>
+        <span class="chip">Aula 1 completa</span>
+      </div>
+    </header>
+
+    <main>
+      <section id="aula-1">
+        <details open>
+          <summary>
+            <div class="summary-header">
+              <h2 class="summary-title">Aula 1 – IA para Geração de Código: Do Prompt ao Pull Request Profissional</h2>
+              <span class="summary-indicator" aria-hidden="true"></span>
+            </div>
+          </summary>
+
+          <p class="section-intro">
+            Esta aula aborda como traduzir intenção humana em software funcional com IA, indo dos fundamentos
+            filosóficos ao fluxo profissional de entrega.
+          </p>
+
+          <div class="simple-list">
+            <h3>Materiais adicionais</h3>
+            <ul>
+              <li><a href="https://docs.google.com/presentation/d/1kob3cR_TYodHgQjRqc5xoCXT85kw2PmuNwb6aJG7Ivo/edit?slide=id.p15#slide=id.p15">Apresentacao (Slides)</a></li>
+              <li><a href="https://github.com/Luanes/lab365-luane-lazuli">Repositorio no GitHub</a></li>
+            </ul>
+          </div>
+
+          <div class="mini-sumario" aria-label="Sumário da Aula 1">
+            <p class="mini-sumario-title">Tópicos da Aula 1:</p>
+            <ul>
+              <li>Fundamentos Filosóficos: Evolução da Inteligência e Intenção</li>
+              <li>A Interface de Comunicação: Contexto e Prompt</li>
+              <li>Engenharia de Prompt e o Colapso do Contexto</li>
+              <li>A Quebra de Intenção na Geração de Aplicações</li>
+              <li>Vibe Coding vs. Spec-Driven Development (SDD)</li>
+              <li>O Fluxo de Trabalho: Do Prompt ao PR</li>
+            </ul>
+          </div>
+
+          <article id="topico-1-1" class="card-topico">
+            <h3>1. Fundamentos Filosóficos: Evolução da Inteligência e Intenção</h3>
+            <p>
+              A reflexão sobre máquinas que "pensam" acompanha a fundação da ciência da computação. Para entendermos
+              como traduzir a nossa intenção em um software funcional, precisamos compreender como a nossa relação com
+              a computação se estabeleceu.
+            </p>
+            <p><strong>A Evolução da Inteligência (Alan Turing)</strong></p>
+            <blockquote>
+              <p>
+                "Não poderiam as maquinas realizar algo que devesse ser chamado de pensar, ainda que muito diferente
+                do que faz um ser humano?"
+              </p>
+            </blockquote>
+            <p>
+              A definição de "inteligência" mudou com o passar dos anos na filosofia, assim como a definição médica do
+              que é estar "vivo" também evoluiu. Apesar de hoje a maioria dos filósofos concordar que a inteligência
+              artificial não é uma inteligência por natureza, é inegável que ela possui mecanismos de raciocínio lógico
+              extremamente sofisticados. A própria fundação teórica de Turing já era um reconhecimento dessa capacidade.
+            </p>
+            <p><strong>Interpretação vs. Descoberta (John Searle)</strong></p>
+            <blockquote>
+              <p>
+                "Você não pode descobrir que o cérebro é um computador digital, só pode interpretar o cérebro como um
+                computador digital."
+              </p>
+            </blockquote>
+            <p>
+              Nós não descobrimos que o cérebro funciona como uma máquina; nós apenas o interpretamos dessa forma para
+              facilitar a nossa compreensão. Esse mecanismo computacional sofisticado foi desenvolvido por nós, humanos.
+              Fomos capazes de digitalizar essas operações para simular artificialmente essa "inteligência".
+            </p>
+            <p><strong>O Ponto de Partida: O Contexto</strong></p>
+            <p>
+              A digitalização da nossa compreensão do mundo é a grande chave para conseguir construir e operar sistemas
+              inteligentes. Por isso, a engenharia de software com IA não começa pela geração de código aleatório, mas
+              sim pelo contexto. É através dele que passamos a nossa intenção e a nossa interpretação de mundo para a
+              máquina.
+            </p>
+          </article>
+
+          <article id="topico-1-2" class="card-topico">
+            <h3>2. A Interface de Comunicação: Contexto e Prompt</h3>
+            <p>
+              A Inteligência Artificial, especificamente os Grandes Modelos de Linguagem (LLMs), atua exclusivamente por
+              meio de mensagens. É fundamental lembrar que o "L" de LLM significa, justamente, Linguagem.
+            </p>
+            <p><strong>O Que é o Contexto na Prática?</strong></p>
+            <p>
+              O contexto é o conjunto de informações de entrada que o modelo utiliza para interpretar a requisição e
+              gerar uma resposta adequada. Possui algumas vantagens principais:
+            </p>
+            <ul>
+              <li><strong>Instruções de Sistema:</strong> diretrizes de base que definem o papel e o comportamento da IA.</li>
+              <li><strong>Arquivos:</strong> documentos, PDFs, apresentações, imagens ou vídeos que expandem a base de conhecimento.</li>
+              <li><strong>Histórico:</strong> os prompts passados concatenados com as respostas geradas.</li>
+              <li><strong>Prompt Atual:</strong> a entrada imediata e direta do usuário.</li>
+            </ul>
+            <p>
+              <strong>Nota técnica:</strong> Tecnologias frequentemente discutidas como RAG, Tools e MCP não são conceitos
+              isolados. São, na verdade, estratégias avançadas para adicionar mais contexto para a IA, ajudando-a a
+              definir melhor o seu papel e a gerar respostas muito mais precisas.
+            </p>
+            <p><strong>O Que é o Prompt?</strong></p>
+            <p>
+              É a interface principal da IA. O prompt é a tradução direta da intenção humana (seja num chatbot, no
+              Gemini ou no Copilot) que, combinada a todo o contexto mencionado acima, dita a resposta final da máquina.
+            </p>
+          </article>
+
+          <article id="topico-1-3" class="card-topico">
+            <h3>3. Engenharia de Prompt e o Colapso do Contexto</h3>
+            <p>
+              Para entender as falhas de comunicação com a IA, precisamos primeiro entender como ela constrói suas
+              respostas nos bastidores.
+            </p>
+            <p><strong>Como a IA gera respostas: A Previsão de Tokens</strong></p>
+            <p>
+              Os Grandes Modelos de Linguagem (LLMs) não "raciocinam" ou "pensam" da forma humana. Na sua essência, eles
+              são modelos estatísticos preditivos extremamente avançados. A função principal da IA é prever o próximo
+              pedaço de palavra (chamado de token).
+            </p>
+            <p>
+              A cada milissegundo, a IA calcula qual é o token mais provável e coerente de aparecer em seguida, baseando-se
+              estritamente em duas fontes:
+            </p>
+            <ul>
+              <li>Todo o contexto que foi fornecido (instruções de sistema, arquivos, histórico da conversa e o prompt atual).</li>
+              <li>O próprio texto que a IA já gerou até aquele momento na resposta.</li>
+            </ul>
+            <p><strong>A Matemática do Contexto e a Redução de Alucinações</strong></p>
+            <p>
+              É aqui que o jogo é ganho ou perdido. Quanto melhor for a definição do contexto e do objetivo do agente,
+              mais você "afunila" as probabilidades matemáticas do modelo.
+            </p>
+            <p>
+              Ao definir regras claras e uma persona específica, você traz para a superfície todas as informações,
+              padrões e jargões daquela área de conhecimento que a IA absorveu durante o seu treinamento.
+              Consequentemente, as palavras previstas (tokens) tornam-se muito mais aderentes à necessidade real
+              declarada pelo usuário.
+            </p>
+            <p>
+              Quando o usuário não consegue traduzir sua intenção em um prompt claro e esse direcionamento matemático se
+              perde, ocorre o Colapso do Contexto (a quebra da intenção original). A IA não "erra"; ela faz exatamente o
+              que foi pedido de forma literal, prevendo os tokens mais prováveis para aquela instrução ruim.
+            </p>
+            <p><strong>Exemplos Práticos do Colapso (A analogia da criança):</strong></p>
+            <ul>
+              <li>
+                <strong>O Cacto-Tomate:</strong> o usuário pediu "um cacto com forma de tomate" e a IA gerou um tomate com um
+                cacto nascendo em cima. O usuário queria o inverso (um tomate com textura de cacto), mas a IA cumpriu a
+                instrução literal.
+              </li>
+              <li>
+                <strong>O Tsunami com Cara Feliz:</strong> após pedir um tsunami e tentar refinar para ter um rosto feliz, a
+                IA gerou monstros, ondas com olhos gigantes e tubarões, mostrando como instruções ambíguas degradam o
+                resultado a cada nova iteração.
+              </li>
+            </ul>
+            <p>
+              Para evitar isso, utilizamos a Engenharia de Prompt: técnicas para "escopar o universo de opções" da IA.
+            </p>
+            <p><strong>Técnica 1: Role Prompting</strong></p>
+            <p>
+              Instrui a IA a assumir uma persona profissional. Isso faz com que a IA acesse aquele subconjunto específico
+              de dados do seu treinamento.
+            </p>
+            <p><strong>Exemplo Prático:</strong></p>
+            <blockquote>
+              <p>
+                "Aja como um Web Designer Sênior especializado em EdTech. Sua missão é criar o código HTML de um
+                componente de 'Plano de Aulas'..."
+              </p>
+            </blockquote>
+            <p>
+              <strong>Vantagem:</strong> a IA adota automaticamente o tom de voz, jargões (ex: priorizar hierarquia visual)
+              e premissas da área, eliminando a necessidade de explicar o básico e garantindo que os tokens gerados
+              pertençam a esse domínio de conhecimento.
+            </p>
+            <p><strong>Técnica 2: Framework P.A.C.I.F.</strong></p>
+            <p>Funciona como um formulário para garantir completude:</p>
+            <ul>
+              <li><strong>P - Papel (Persona):</strong> Você é um Especialista em Web Design com foco em UX...</li>
+              <li><strong>A - Ação (Tarefa):</strong> Crie o código HTML para uma seção de "Plano de Aulas"...</li>
+              <li><strong>C - Contexto:</strong> Para ser inserida em um Google Site voltada para alunos do curso "IA para Devs".</li>
+              <li><strong>I - Instruções:</strong> Layout limpo. Estrutura com título e 3 cartões semanais. Use tons de azul e cinza.</li>
+              <li><strong>F - Formato:</strong> Entregue apenas o código HTML puro, pronto para copiar e colar.</li>
+            </ul>
+          </article>
+
+          <article id="topico-1-4" class="card-topico">
+            <h3>4. A Quebra de Intenção na Geração de Aplicações</h3>
+            <p>
+              Ao construirmos software de forma iterativa com Inteligência Artificial, o acúmulo e o excesso de contexto
+              podem se transformar nos nossos maiores inimigos.
+            </p>
+            <p><strong>O Caso Real da Página Web</strong></p>
+            <p>Durante a aula, analisamos um cenário prático de evolução de código:</p>
+            <ul>
+              <li><strong>O Início:</strong> o usuário pediu para criar uma página de "IA para Devs" usando React e Tailwind. (Sucesso)</li>
+              <li>
+                <strong>A Adaptação:</strong> em seguida, pediu para alterar o código para um arquivo .html estático,
+                compatível com o Google Sites. (Sucesso)
+              </li>
+              <li><strong>A Nova Feature:</strong> por fim, solicitou a adição de uma nova seção de simulado na página.</li>
+            </ul>
+            <p><strong>O Problema</strong></p>
+            <p>
+              A IA atendeu ao último pedido e gerou o código do simulado perfeitamente. Porém, ao entregar o resultado,
+              ela apagou o menu de navegação e todas as seções anteriores que já estavam prontas.
+            </p>
+            <p><strong>A Causa: O Limite da Janela de Contexto</strong></p>
+            <p>
+              Isso acontece porque o histórico da conversa cresceu tanto que "estourou" o limite de memória de curto
+              prazo da LLM (conhecido como janela de contexto). Para conseguir processar a instrução mais recente e
+              complexa (criar o simulado), a IA foi forçada a "esquecer" os componentes originais e o escopo inicial do
+              projeto. Ela focou apenas no último prompt, resultando na quebra total da intenção original do usuário e
+              da integridade do software.
+            </p>
+          </article>
+
+          <article id="topico-1-5" class="card-topico">
+            <h3>5. Vibe Coding vs. Spec-Driven Development (SDD)</h3>
+            <p>
+              Para resolver a Quebra de Intenção e contornar os limites da janela de contexto, precisamos mudar a forma
+              como construímos software com IA. Na aula, contrastamos duas abordagens principais:
+            </p>
+            <p><strong>Vibe Coding (O "Go Horse" da IA)</strong></p>
+            <p>
+              <strong>O que é:</strong> a prática de fazer pedidos sequenciais e desestruturados diretamente via chat (ex:
+              "Muda a cor", "Tira o menu", "Põe um botão").
+            </p>
+            <p>
+              <strong>O Problema:</strong> essa abordagem dilui o contexto geral rapidamente. É excelente para prototipação
+              rápida e experimentação, mas desastrosa para manter software de qualidade no longo prazo. À medida que o
+              código cresce, o Vibe Coding causa alucinações e perda de controle sobre a aplicação.
+            </p>
+            <p><strong>Spec-Driven Development (O Rigor da Engenharia)</strong></p>
+            <p>
+              <strong>O que é:</strong> a utilização de um documento de especificação (como um arquivo SPEC.md) como a Única
+              Fonte da Verdade (The Single Source of Truth).
+            </p>
+            <p>
+              <strong>Na Prática:</strong> em editores modernos voltados para IA (como o Cursor), você mantém o arquivo
+              SPEC.md aberto de um lado e o código-fonte (ex: index.js) do outro. Quando um requisito do projeto muda,
+              você não pede para a IA "mudar o código no chat". Você altera o texto na Especificação e instrui a IA:
+              "Leia a Spec e atualize o código". A IA extrai o planejamento atualizado e implementa a mudança de forma
+              cirúrgica.
+            </p>
+            <p><strong>Vantagens do SDD:</strong></p>
+            <ul>
+              <li><strong>Portabilidade:</strong> a Especificação independe da ferramenta.</li>
+              <li>
+                <strong>Consistência:</strong> a regra de negócio mudou? Altere a Spec. A IA mantém o foco nos requisitos
+                documentados. O objetivo é que os testes validem a Spec, e não apenas o código gerado.
+              </li>
+              <li>
+                <strong>Empoderamento:</strong> permite criar soluções em stacks tecnológicas que você não domina profundamente.
+                Um desenvolvedor backend, por exemplo, pode criar interfaces web complexas ajustando apenas as
+                especificações em português.
+              </li>
+              <li><strong>Rastreabilidade:</strong> a Especificação documenta o porquê, enquanto a IA foca em gerar o como.</li>
+            </ul>
+          </article>
+
+          <article id="topico-1-6" class="card-topico">
+            <h3>6. O Fluxo de Trabalho: Do Prompt ao PR</h3>
+            <p>
+              A verdadeira engenharia de software auxiliada por IA documenta perfeitamente todo o processo de
+              desenvolvimento. É aqui que a Especificação (SDD) se une às ferramentas clássicas para criar um fluxo
+              profissional e seguro.
+            </p>
+            <p><strong>O Poder do Git no SDD</strong></p>
+            <p>
+              Ao adotar a Especificação como a única fonte da verdade, o uso do Git torna-se extremamente poderoso. Ao
+              rodar um comando para visualizar a árvore do projeto (como git log --oneline --graph), o histórico fica
+              absolutamente claro.
+            </p>
+            <p>
+              Em vez de commits confusos indicando que a "IA alterou código aleatório", você passa a ter o registro
+              exato da alteração da regra de negócio na Spec, acompanhado da mudança correspondente no código final.
+              Isso garante reversões (rollbacks) seguras e a criação de Pull Requests (PRs) muito mais robustos e fáceis
+              de revisar.
+            </p>
+            <p><strong>Resumo da Jornada: As 4 Etapas</strong></p>
+            <ul>
+              <li><strong>Filosofia (A Intenção):</strong> o "porquê" do projeto e a visão de valorizar a capacidade intelectual humana.</li>
+              <li><strong>Contexto (A Ideação):</strong> a fase de experimentação e uso de Vibe Coding para extrair os primeiros requisitos.</li>
+              <li><strong>Engenharia (O Rigor):</strong> aplicação do Spec-Driven Development e uso de fluxos de agentes sobre a Spec.</li>
+              <li><strong>Aplicação (O Produto):</strong> entrega final de software previsível e alinhado à especificação original.</li>
+            </ul>
+          </article>
+
+          <div class="simple-list">
+            <h3>Links úteis</h3>
+            <ul>
+              <li><a href="https://rediminds.com/future-edge/how-meta-prompting-and-role-engineering-are-unlocking-the-next-generation-of-ai-agents/">Artigo: Role Prompting</a></li>
+              <li><a href="https://www.dio.me/articles/o-guia-definitivo-da-engenharia-de-prompts-uma-jornada-desvendando-o-poder-de-prompts-assertivos">Artigo: P.A.C.I.F</a></li>
+              <li><a href="https://medium.com/@addyosmani/vibe-coding-is-not-the-same-as-ai-assisted-engineering-3f81088d5b98">Artigo: Vibe coding</a></li>
+              <li><a href="https://www.thoughtworks.com/pt-br/insights/blog/agile-engineering-practices/spec-driven-development-unpacking-2025-new-engineering-practices">Artigo: Spec-Driven Development</a></li>
+              <li><a href="https://www.youtube.com/watch?v=mViFYTwWvcM">Video: Comparacao Spec-driven Development e vibe coding</a></li>
+              <li><a href="https://martinfowler.com/articles/exploring-gen-ai/context-engineering-coding-agents.html">Artigo: Context Engineering</a></li>
+            </ul>
+          </div>
+        </details>
+      </section>
+
+      <section id="aula-2">
+        <details>
+          <summary>
+            <div class="summary-header">
+              <h2 class="summary-title">Aula 2 – Construindo um Workflow de Testes Unitários Automáticos com IA</h2>
+              <span class="summary-indicator" aria-hidden="true"></span>
+            </div>
+          </summary>
+          <div class="simple-list">
+            <h3>Materiais adicionais</h3>
+            <ul>
+              <li>Material adicional 1 – será definido pelo professor.</li>
+            </ul>
+          </div>
+          <p class="em-breve">Conteúdo desta aula será disponibilizado em breve.</p>
+          <div class="simple-list">
+            <h3>Links úteis</h3>
+            <ul>
+              <li>Link útil 1 – será definido pelo professor.</li>
+            </ul>
+          </div>
+        </details>
+      </section>
+
+      <section id="aula-3">
+        <details>
+          <summary>
+            <div class="summary-header">
+              <h2 class="summary-title">Aula 3 – Documentação Viva com IA: Automação, Versionamento e Consistência</h2>
+              <span class="summary-indicator" aria-hidden="true"></span>
+            </div>
+          </summary>
+          <div class="simple-list">
+            <h3>Materiais adicionais</h3>
+            <ul>
+              <li>Material adicional 1 – será definido pelo professor.</li>
+            </ul>
+          </div>
+          <p class="em-breve">Conteúdo desta aula será disponibilizado em breve.</p>
+          <div class="simple-list">
+            <h3>Links úteis</h3>
+            <ul>
+              <li>Link útil 1 – será definido pelo professor.</li>
+            </ul>
+          </div>
+        </details>
+      </section>
+
+      <section id="aula-4">
+        <details>
+          <summary>
+            <div class="summary-header">
+              <h2 class="summary-title">Aula 4 – Integração de Agentes ao Ecossistema: APIs, RAG e Observabilidade</h2>
+              <span class="summary-indicator" aria-hidden="true"></span>
+            </div>
+          </summary>
+          <div class="simple-list">
+            <h3>Materiais adicionais</h3>
+            <ul>
+              <li>Material adicional 1 – será definido pelo professor.</li>
+            </ul>
+          </div>
+          <p class="em-breve">Conteúdo desta aula será disponibilizado em breve.</p>
+          <div class="simple-list">
+            <h3>Links úteis</h3>
+            <ul>
+              <li>Link útil 1 – será definido pelo professor.</li>
+            </ul>
+          </div>
+        </details>
+      </section>
+
+      <section id="aula-5">
+        <details>
+          <summary>
+            <div class="summary-header">
+              <h2 class="summary-title">Aula 5 – Arquitetura de Sistemas com IA: Orquestração de Agentes, Memória e Segurança</h2>
+              <span class="summary-indicator" aria-hidden="true"></span>
+            </div>
+          </summary>
+          <div class="simple-list">
+            <h3>Materiais adicionais</h3>
+            <ul>
+              <li>Material adicional 1 – será definido pelo professor.</li>
+            </ul>
+          </div>
+          <p class="em-breve">Conteúdo desta aula será disponibilizado em breve.</p>
+          <div class="simple-list">
+            <h3>Links úteis</h3>
+            <ul>
+              <li>Link útil 1 – será definido pelo professor.</li>
+            </ul>
+          </div>
+        </details>
+      </section>
+
+      <section id="simulado" class="simple-list">
+        <details>
+          <summary>
+            <div class="summary-header">
+              <h2 class="summary-title">Simulado</h2>
+              <span class="summary-indicator" aria-hidden="true"></span>
+            </div>
+          </summary>
+
+          <p class="section-intro">
+            Aqui serão disponibilizados os links para simulados e questionários de revisão da disciplina.
+          </p>
+          <ul>
+            <li>Simulado 1 – link será adicionado pelo professor.</li>
+          </ul>
+        </details>
+      </section>
+    </main>
+
+    <footer class="page-footer">
+      <p>Página de apoio à disciplina IA para Desenvolvedores – versão inicial.</p>
+      <p class="back-to-top"><button type="button" data-scroll-top>Voltar ao início</button></p>
+    </footer>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var button = document.querySelector("[data-scroll-top]");
+      if (!button) {
+        return;
+      }
+      button.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  </script>
+</body>
+</html>
