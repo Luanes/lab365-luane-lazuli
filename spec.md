@@ -71,8 +71,6 @@ Organizacao de arquivos no repositorio:
   - Aula 3
   - Aula 4
   - Aula 5
-  - Links úteis
-  - Materiais adicionais
   - Simulado
 - Cada item aponta para um `id` correspondente em seções abaixo, por ex.:
   - `#aula-1`
@@ -80,8 +78,6 @@ Organizacao de arquivos no repositorio:
   - `#aula-3`
   - `#aula-4`
   - `#aula-5`
-  - `#links-uteis`
-  - `#materiais-adicionais`
   - `#simulado`
 - As seções principais devem ser navegáveis a partir do topo e, ao chegar na âncora, o bloco colapsável correspondente deve estar claramente identificado para o aluno expandir o conteúdo desejado.
 - Visual:
@@ -96,11 +92,22 @@ Organizacao de arquivos no repositorio:
 - Hierarquia:
   - `h2`: “Aula 1 – IA para Geração de Código: Do Prompt ao Pull Request Profissional”.
   - Parágrafo introdutório curto explicando objetivo da aula: introduzir como a intenção humana se traduz em software com IA, do contexto ao fluxo profissional de entrega.
+  - Subsecao de materiais adicionais no topo da aula.
   - Mini sumário interno (opcional): lista simples de links para cada tópico da Aula 1 (âncoras locais).
+  - Subsecao de links úteis ao final da aula.
 - Status estrutural: `STATUS_REFINADO`  
 - Texto do parágrafo introdutório: `STATUS_REFINADO`
 
-#### 3.4.1. Mini Sumário da Aula 1 (Opcional)
+#### 3.4.1. Materiais adicionais (Aula 1)
+
+- Subsecao no topo da aula com `h3`: “Materiais adicionais”.
+- Lista (`ul`) com links clicáveis:
+  - [Apresentação (Slides)](https://docs.google.com/presentation/d/1kob3cR_TYodHgQjRqc5xoCXT85kw2PmuNwb6aJG7Ivo/edit?slide=id.p15#slide=id.p15)
+  - [Repositorio no GitHub](https://github.com/Luanes/lab365-luane-lazuli)
+- Status estrutural e visual: `STATUS_REFINADO`
+- Lista final de materiais (Aula 1): `STATUS_REFINADO`
+
+#### 3.4.2. Mini Sumário da Aula 1 (Opcional)
 
 - Conteúdo em lista (por exemplo, `ul`):
   - Link para tópico 1: “Fundamentos Filosóficos: Evolução da Inteligência e Intenção”
@@ -114,7 +121,7 @@ Organizacao de arquivos no repositorio:
 - Status estrutural: `STATUS_REFINADO`  
 - Conteúdos internos (textos descritivos dentro de cada tópico): `STATUS_REFINADO`
 
-#### 3.4.2. Cards dos 6 Tópicos da Aula 1
+#### 3.4.3. Cards dos 6 Tópicos da Aula 1
 
 Para cada tópico:
 
@@ -236,6 +243,19 @@ Para cada tópico:
   - Engenharia (O Rigor): aplicacao do SDD e uso de fluxos de agentes sobre a Spec.
   - Aplicacao (O Produto): entrega final de software previsivel e alinhado a especificacao.
 
+#### 3.4.4. Links úteis (Aula 1)
+
+- Subsecao ao final da aula com `h3`: “Links úteis”.
+- Lista (`ul`) com links clicáveis:
+  - [Artigo: Role Prompting](https://rediminds.com/future-edge/how-meta-prompting-and-role-engineering-are-unlocking-the-next-generation-of-ai-agents/)
+  - [Artigo: P.A.C.I.F](https://www.dio.me/articles/o-guia-definitivo-da-engenharia-de-prompts-uma-jornada-desvendando-o-poder-de-prompts-assertivos)
+  - [Artigo: Vibe coding](https://medium.com/@addyosmani/vibe-coding-is-not-the-same-as-ai-assisted-engineering-3f81088d5b98)
+  - [Artigo: Spec-Driven Development](https://www.thoughtworks.com/pt-br/insights/blog/agile-engineering-practices/spec-driven-development-unpacking-2025-new-engineering-practices)
+  - [Video: Comparacao Spec-driven Development e vibe coding](https://www.youtube.com/watch?v=mViFYTwWvcM)
+  - [Artigo: Context Engineering](https://martinfowler.com/articles/exploring-gen-ai/context-engineering-coding-agents.html)
+- Status estrutural e visual: `STATUS_REFINADO`
+- Lista final de links úteis (Aula 1): `STATUS_REFINADO`
+
 ### 3.5. Seções das Aulas 2 a 5
 
 Para cada aula:
@@ -247,43 +267,18 @@ Para cada aula:
     - Aula 3 – Documentação Viva com IA: Automação, Versionamento e Consistência
     - Aula 4 – Integração de Agentes ao Ecossistema: APIs, RAG e Observabilidade
     - Aula 5 – Arquitetura de Sistemas com IA: Orquestração de Agentes, Memória e Segurança
+  - Subsecao de materiais adicionais no topo de cada aula, com `h3` e lista placeholder:
+    - “Material adicional 1 – será definido pelo professor.”
   - Um único parágrafo curto, por exemplo:
     - “Conteúdo desta aula será disponibilizado em breve.”
+  - Subsecao de links úteis ao final de cada aula, com `h3` e lista placeholder:
+    - “Link útil 1 – será definido pelo professor.”
 - Visual:
   - Estrutura semelhante: bloco com margem superior, título destacado e texto centralizado ou alinhado à esquerda.
   - Nada além do parágrafo “Em breve” para evitar ruído.
 - Status estrutural e visual: `STATUS_REFINADO`  
 - Eventuais descrições adicionais futuras de cada aula: `STATUS_AGUARDANDO_REQUISITOS`
-
-### 3.6. Seção “Links úteis”
-
-- `section` com `id="links-uteis"`.
-- Conteúdo:
-  - `h2`: “Links úteis”.
-  - Parágrafo explicativo curto:
-    - “Aqui você encontrará links importantes citados nas aulas.”
-  - Lista (`ul`) com itens placeholder:
-    - “Repositório no GitHub – link será adicionado pelo professor.”
-    - “Apresentação da aula no Google Apresentações – link será adicionado pelo professor.”
-    - “Outros recursos – serão adicionados pelo professor.”
-- Visual:
-  - Lista simples, sem ícones pesados; links reais virão depois.
-- Status estrutural e visual: `STATUS_REFINADO`  
-- URLs reais e textos finais dos links: `STATUS_AGUARDANDO_REQUISITOS`
-
-### 3.7. Seção “Materiais adicionais”
-
-- `section` com `id="materiais-adicionais"`.
-- Conteúdo:
-  - `h2`: “Materiais adicionais”.
-  - Parágrafo explicando o objetivo:
-    - “Nesta seção ficarão PDFs, artigos, vídeos e outros materiais complementares.”
-  - Lista (`ul`) vazia ou com 1–2 itens placeholder:
-    - “Material adicional 1 – será definido pelo professor.”
-- Status estrutural e visual: `STATUS_REFINADO`  
-- Lista final de materiais e descrições: `STATUS_AGUARDANDO_REQUISITOS`
-
-### 3.8. Seção “Simulado”
+### 3.6. Seção “Simulado”
 
 - `section` com `id="simulado"`.
 - Conteúdo:
@@ -295,7 +290,7 @@ Para cada aula:
 - Status estrutural e visual: `STATUS_REFINADO`  
 - Links reais de simulados e descrições: `STATUS_AGUARDANDO_REQUISITOS`
 
-### 3.9. Rodapé Simples
+### 3.7. Rodapé Simples
 
 - Pequeno bloco final:
   - Parágrafo discreto:
@@ -355,8 +350,8 @@ Para cada aula:
 ### 5.1. Estrutura Semântica
 
 - Um único `h1` (título da página).
-- `h2` para seções principais (Aulas 1–5, Links úteis, Materiais adicionais, Simulado).
-- `h3` para subtópicos da Aula 1.
+- `h2` para seções principais (Aulas 1–5, Simulado).
+- `h3` para subtópicos da Aula 1 e subsecoes de materiais/links das aulas.
 - Uso de `nav` com `aria-label="Navegação da disciplina"`.
 - Status: `STATUS_REFINADO`
 
@@ -376,11 +371,8 @@ Para cada aula:
 ### 5.4. Conteúdos Pendentes do Professor
 
 - Descrições de Aulas 2–5 (se houver interesse em expandir além de “Em breve”).
-- URLs e descrições de:
-  - Repositório GitHub.
-  - Apresentações no Google Apresentações.
-  - Materiais adicionais (PDFs, artigos, vídeos).
-  - Simulados / questionários.
+- URLs e descrições de materiais adicionais e links úteis das Aulas 2–5.
+- Links reais de simulados / questionários.
 - Todos estes permanecem com status: `STATUS_AGUARDANDO_REQUISITOS`
 
 ---
@@ -391,10 +383,8 @@ Para cada aula:
   - Estrutura HTML global (head, body, seção única centralizada).
   - Header/hero da disciplina (estrutura e estilo).
   - Navegação interna por âncoras (estrutura e estilo).
-  - Seção Aula 1: estrutura, mini sumário, cards dos 6 tópicos com conteúdo completo transcrito.
-  - Seções Aulas 2–5 com mensagem “Em breve”.
-  - Seção “Links úteis” (estrutura de lista com placeholders).
-  - Seção “Materiais adicionais” (estrutura de lista com placeholders).
+  - Seção Aula 1: estrutura, materiais adicionais (com links reais), mini sumário, cards dos 6 tópicos e links úteis (com links reais).
+  - Seções Aulas 2–5 com mensagem “Em breve”, materiais adicionais e links úteis como placeholders internos.
   - Seção “Simulado” (estrutura de lista com placeholders).
   - Rodapé simples.
   - Paleta de cores, tipografia e layout base.
@@ -405,7 +395,5 @@ Para cada aula:
     - Subtítulo do header.
     - Eventuais descrições complementares de Aulas 2–5 (caso queira mais do que “Em breve”).
   - URLs e rótulos finais:
-    - Repositório GitHub.
-    - Apresentações no Google Apresentações.
-    - Materiais adicionais (PDFs, artigos, vídeos).
+    - Materiais adicionais e links úteis das Aulas 2–5.
     - Simulados / questionários.
